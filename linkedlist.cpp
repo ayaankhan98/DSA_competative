@@ -102,6 +102,15 @@ void DeleteNode(Node* &head,int key)
     return;
 }
 
+// finding lenght using recursion
+int length(Node* head)
+{
+    if(head == nullptr)
+        return 0;
+    return 1 + length(head->next);
+}
+// finding length using itreation
+/*
 int length(Node* head)
 {
     int length = 0;
@@ -114,7 +123,7 @@ int length(Node* head)
         temp = temp->next;
     }
     return ++length;
-}
+}*/
 
 
 void DeleteNodeAtPosition(Node* &head, int position)
@@ -146,6 +155,37 @@ void DeleteNodeAtPosition(Node* &head, int position)
     }
 }
 
+int GetNthNodeElement(Node* head, int position)
+{
+    if(position <= length(head))
+    {
+        Node* current = head;
+        for(int i=0;current->next != nullptr ; ++i)
+        {
+            if (i == position-1)
+            {
+                return current->data;
+            }
+            current = current->next;
+        }
+    }
+    else
+    {
+        std::cout<<"Error : Out of Range!\n";
+    }
+}
+
+void DeleteList(Node* &head)
+{
+    Node* current = head, *next;
+    while(current != nullptr)
+    {
+        next = current->next;
+        delete current;
+        current = next;
+    }
+    head = nullptr;
+}
 
 int main()
 {
@@ -209,7 +249,7 @@ int main()
     InsertAtEnd(head,15);
     PrintList(head);
 
-    std::cout<<"Deleting 0 form list\n";
+  /*  std::cout<<"Deleting 0 form list\n";
     DeleteNode(head,0);
     PrintList(head);
 
@@ -243,8 +283,14 @@ int main()
 
     std::cout<<"Deleting Element At position 2\n";
     DeleteNodeAtPosition(head,2);
+    PrintList(head);*/
+
+    std::cout<<GetNthNodeElement(head,3);
+    std::cout<<std::endl;
+
+    std::cout<<"Deleting the List\n";
+    DeleteList(head);
     PrintList(head);
-    
 
     return 0;
 }
