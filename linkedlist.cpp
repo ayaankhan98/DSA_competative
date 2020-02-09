@@ -9,6 +9,11 @@ class Node {
 
 void PrintList(Node* head)
 {
+    if (head == nullptr)
+    {
+        std::cout<<"List is Empty!\n";
+        return;
+    }
     while(head != nullptr)
     {
         std::cout<<head->data<<"  ";
@@ -48,6 +53,13 @@ void InsertAfter(Node* prev_node, int new_data)
 
 void InsertAtEnd(Node* &head, int new_data)
 {
+    if (head == nullptr)
+    {
+        Node* new_node = new Node();
+        new_node->data = new_data;
+        new_node->next = nullptr;
+        head = new_node;
+    }
     Node* last = head;
 
     Node* new_node = new Node();
@@ -62,10 +74,83 @@ void InsertAtEnd(Node* &head, int new_data)
     return;
 }
 
+void DeleteNode(Node* &head,int key)
+{
+    Node* temp = head, *prev;
+    
+    if(temp->next != nullptr && temp->data == key)
+    {
+        head = temp->next;
+        delete temp;
+        return;
+    }
+    while(temp->data != key && temp->next != nullptr)
+    {
+        prev = temp;
+        temp = temp->next;
+    }
+
+    if(temp->next == nullptr)
+    {
+        std::cout<<"No Element with given key in List\n";
+        return;
+    }
+
+    prev->next = temp->next;
+
+    delete temp;
+    return;
+}
+
+int length(Node* head)
+{
+    int length = 0;
+    Node* temp = head;
+    if (temp == nullptr)
+        return length;
+    while(temp->next != nullptr)
+    {
+        ++length;
+        temp = temp->next;
+    }
+    return ++length;
+}
+
+
+void DeleteNodeAtPosition(Node* &head, int position)
+{
+    if (position <= length(head))
+    {
+        Node* temp = head, *prev;
+
+        if (position == 1)
+        {
+            head = temp->next;
+            delete temp;
+            return;
+        }
+
+        for (auto i=0 ; temp->next != nullptr && i<position-1 ; ++i)
+        {
+            prev = temp;
+            temp = temp->next;
+        }
+
+        prev->next = temp->next;
+        delete temp;
+        return;
+    }
+    else
+    {
+        std::cout<<"Error : Out of Range!\n";
+    }
+}
+
+
 int main()
 {
     Node* head = nullptr;
-    Node* second = nullptr;
+   /* Node* second = nullptr;
     Node* third = nullptr;
 
     head = new Node();
@@ -79,7 +164,7 @@ int main()
     second->next = third;
 
     third->data = 3;
-    third->next = nullptr;
+    third->next = nullptr;*/
 
 
     PrintList(head);
@@ -88,13 +173,78 @@ int main()
     InsertAtFront(head, 0);
     PrintList(head);
 
-    std::cout<<"Adding 8 after second Node \n";
-    InsertAfter(second,8);
+    std::cout<<"Adding 5 to Front of List \n";
+    InsertAtFront(head, 5);
     PrintList(head);
+
+    std::cout<<"Adding 6 to Front of List \n";
+    InsertAtFront(head, 6);
+    PrintList(head);
+
+    std::cout<<"Adding 9 to Front of List \n";
+    InsertAtFront(head, 9);
+    PrintList(head);
+
+    std::cout<<"Adding 11 to Front of List \n";
+    InsertAtFront(head, 11);
+    PrintList(head);
+
+   /* std::cout<<"Adding 8 after second Node \n";
+    InsertAfter(second,8);
+    PrintList(head);*/
 
     std::cout<<"Adding 10 at the end of the list\n";
     InsertAtEnd(head,10);
     PrintList(head);
+
+    std::cout<<"Adding 8 at the end of the list\n";
+    InsertAtEnd(head,8);
+    PrintList(head);
+
+    std::cout<<"Adding 12 at the end of the list\n";
+    InsertAtEnd(head,12);
+    PrintList(head);
+
+    std::cout<<"Adding 15 at the end of the list\n";
+    InsertAtEnd(head,15);
+    PrintList(head);
+
+    std::cout<<"Deleting 0 form list\n";
+    DeleteNode(head,0);
+    PrintList(head);
+
+    std::cout<<"Deleting 8 form list\n";
+    DeleteNode(head,8);
+    PrintList(head);
+
+    std::cout<<"Deleting Element At position 2\n";
+    DeleteNodeAtPosition(head,2);
+    PrintList(head);
+
+    std::cout<<"Deleting Element At position 1\n";
+    DeleteNodeAtPosition(head,1);
+    PrintList(head);
+
+    std::cout<<"Deleting Element At position 2\n";
+    DeleteNodeAtPosition(head,2);
+    PrintList(head);
+
+    std::cout<<"Deleting Element At position 2\n";
+    DeleteNodeAtPosition(head,2);
+    PrintList(head);
+
+    std::cout<<"Deleting Element At position 12\n";
+    DeleteNodeAtPosition(head,12);
+    PrintList(head);
+
+    std::cout<<"Deleting Element At position 2\n";
+    DeleteNodeAtPosition(head,2);
+    PrintList(head);
+
+    std::cout<<"Deleting Element At position 2\n";
+    DeleteNodeAtPosition(head,2);
+    PrintList(head);
+    
 
     return 0;
 }
