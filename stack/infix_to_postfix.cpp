@@ -68,7 +68,7 @@ void infixToPostfix(std::string s)
 
 int main()
 {
-    std::string s = "a+b*c+d";
+    std::string s = "(a+b)*c+d";
     infixToPostfix(s);
     std::cout<<std::endl;
     return 0;
