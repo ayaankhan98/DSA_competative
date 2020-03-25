@@ -1,9 +1,8 @@
 #include <bits/stdc++.h>
-
 class Node {
     public:
         int data;
-        Node* next;        
+        Node* next;
 };
 
 
@@ -43,7 +42,7 @@ void InsertAfter(Node* prev_node, int new_data)
     }
 
     Node* new_node = new Node();
-    
+
     new_node->data = new_data;
     new_node->next = prev_node->next;
     prev_node->next = new_node;
@@ -77,7 +76,7 @@ void InsertAtEnd(Node* &head, int new_data)
 void DeleteNode(Node* &head,int key)
 {
     Node* temp = head, *prev;
-    
+
     if(temp->next != nullptr && temp->data == key)
     {
         head = temp->next;
