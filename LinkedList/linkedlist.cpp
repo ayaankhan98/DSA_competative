@@ -1,29 +1,29 @@
 #include <bits/stdc++.h>
-class Node {
-    public:
-        int data;
-        Node* next;
+class Node
+{
+public:
+    int data;
+    Node *next;
 };
 
-
-void PrintList(Node* head)
+void PrintList(Node *head)
 {
     if (head == nullptr)
     {
-        std::cout<<"List is Empty!\n";
+        std::cout << "List is Empty!\n";
         return;
     }
-    while(head != nullptr)
+    while (head != nullptr)
     {
-        std::cout<<head->data<<"  ";
+        std::cout << head->data << "  ";
         head = head->next;
     }
-    std::cout<<std::endl;
+    std::cout << std::endl;
 }
 
-void InsertAtFront(Node* &head, int new_data)
+void InsertAtFront(Node *&head, int new_data)
 {
-    Node* new_node = new Node();
+    Node *new_node = new Node();
 
     new_node->data = new_data;
     new_node->next = head;
@@ -32,16 +32,15 @@ void InsertAtFront(Node* &head, int new_data)
     return;
 }
 
-
-void InsertAfter(Node* prev_node, int new_data)
+void InsertAfter(Node *prev_node, int new_data)
 {
     if (prev_node == nullptr)
     {
-        std::cout<<"Previous Node Cannot be NULL!"<<std::endl;
+        std::cout << "Previous Node Cannot be NULL!" << std::endl;
         return;
     }
 
-    Node* new_node = new Node();
+    Node *new_node = new Node();
 
     new_node->data = new_data;
     new_node->next = prev_node->next;
@@ -50,22 +49,22 @@ void InsertAfter(Node* prev_node, int new_data)
     return;
 }
 
-void InsertAtEnd(Node* &head, int new_data)
+void InsertAtEnd(Node *&head, int new_data)
 {
     if (head == nullptr)
     {
-        Node* new_node = new Node();
+        Node *new_node = new Node();
         new_node->data = new_data;
         new_node->next = nullptr;
         head = new_node;
     }
-    Node* last = head;
+    Node *last = head;
 
-    Node* new_node = new Node();
+    Node *new_node = new Node();
     new_node->data = new_data;
     new_node->next = nullptr;
 
-    while(last->next != nullptr)
+    while (last->next != nullptr)
         last = last->next;
 
     last->next = new_node;
@@ -73,25 +72,25 @@ void InsertAtEnd(Node* &head, int new_data)
     return;
 }
 
-void DeleteNode(Node* &head,int key)
+void DeleteNode(Node *&head, int key)
 {
-    Node* temp = head, *prev;
+    Node *temp = head, *prev;
 
-    if(temp->next != nullptr && temp->data == key)
+    if (temp->next != nullptr && temp->data == key)
     {
         head = temp->next;
         delete temp;
         return;
     }
-    while(temp->data != key && temp->next != nullptr)
+    while (temp->data != key && temp->next != nullptr)
     {
         prev = temp;
         temp = temp->next;
     }
 
-    if(temp->next == nullptr)
+    if (temp->next == nullptr)
     {
-        std::cout<<"No Element with given key in List\n";
+        std::cout << "No Element with given key in List\n";
         return;
     }
 
@@ -102,9 +101,9 @@ void DeleteNode(Node* &head,int key)
 }
 
 // finding lenght using recursion
-int length(Node* head)
+int length(Node *head)
 {
-    if(head == nullptr)
+    if (head == nullptr)
         return 0;
     return 1 + length(head->next);
 }
@@ -124,12 +123,11 @@ int length(Node* head)
     return ++length;
 }*/
 
-
-void DeleteNodeAtPosition(Node* &head, int position)
+void DeleteNodeAtPosition(Node *&head, int position)
 {
     if (position <= length(head))
     {
-        Node* temp = head, *prev;
+        Node *temp = head, *prev;
 
         if (position == 1)
         {
@@ -138,7 +136,7 @@ void DeleteNodeAtPosition(Node* &head, int position)
             return;
         }
 
-        for (auto i=0 ; temp->next != nullptr && i<position-1 ; ++i)
+        for (auto i = 0; temp->next != nullptr && i < position - 1; ++i)
         {
             prev = temp;
             temp = temp->next;
@@ -150,18 +148,18 @@ void DeleteNodeAtPosition(Node* &head, int position)
     }
     else
     {
-        std::cout<<"Error : Out of Range!\n";
+        std::cout << "Error : Out of Range!\n";
     }
 }
 
-int GetNthNodeElement(Node* head, int position)
+int GetNthNodeElement(Node *head, int position)
 {
-    if(position <= length(head))
+    if (position <= length(head))
     {
-        Node* current = head;
-        for(int i=0;current->next != nullptr ; ++i)
+        Node *current = head;
+        for (int i = 0; current->next != nullptr; ++i)
         {
-            if (i == position-1)
+            if (i == position - 1)
             {
                 return current->data;
             }
@@ -170,14 +168,14 @@ int GetNthNodeElement(Node* head, int position)
     }
     else
     {
-        std::cout<<"Error : Out of Range!\n";
+        std::cout << "Error : Out of Range!\n";
     }
 }
 
-void DeleteList(Node* &head)
+void DeleteList(Node *&head)
 {
-    Node* current = head, *next;
-    while(current != nullptr)
+    Node *current = head, *next;
+    while (current != nullptr)
     {
         next = current->next;
         delete current;
@@ -188,8 +186,8 @@ void DeleteList(Node* &head)
 
 int main()
 {
-    Node* head = nullptr;
-   /* Node* second = nullptr;
+    Node *head = nullptr;
+    /* Node* second = nullptr;
     Node* third = nullptr;
 
     head = new Node();
@@ -205,50 +203,49 @@ int main()
     third->data = 3;
     third->next = nullptr;*/
 
-
     PrintList(head);
 
-    std::cout<<"Adding 0 to Front of List \n";
+    std::cout << "Adding 0 to Front of List \n";
     InsertAtFront(head, 0);
     PrintList(head);
 
-    std::cout<<"Adding 5 to Front of List \n";
+    std::cout << "Adding 5 to Front of List \n";
     InsertAtFront(head, 5);
     PrintList(head);
 
-    std::cout<<"Adding 6 to Front of List \n";
+    std::cout << "Adding 6 to Front of List \n";
     InsertAtFront(head, 6);
     PrintList(head);
 
-    std::cout<<"Adding 9 to Front of List \n";
+    std::cout << "Adding 9 to Front of List \n";
     InsertAtFront(head, 9);
     PrintList(head);
 
-    std::cout<<"Adding 11 to Front of List \n";
+    std::cout << "Adding 11 to Front of List \n";
     InsertAtFront(head, 11);
     PrintList(head);
 
-   /* std::cout<<"Adding 8 after second Node \n";
+    /* std::cout<<"Adding 8 after second Node \n";
     InsertAfter(second,8);
     PrintList(head);*/
 
-    std::cout<<"Adding 10 at the end of the list\n";
-    InsertAtEnd(head,10);
+    std::cout << "Adding 10 at the end of the list\n";
+    InsertAtEnd(head, 10);
     PrintList(head);
 
-    std::cout<<"Adding 8 at the end of the list\n";
-    InsertAtEnd(head,8);
+    std::cout << "Adding 8 at the end of the list\n";
+    InsertAtEnd(head, 8);
     PrintList(head);
 
-    std::cout<<"Adding 12 at the end of the list\n";
-    InsertAtEnd(head,12);
+    std::cout << "Adding 12 at the end of the list\n";
+    InsertAtEnd(head, 12);
     PrintList(head);
 
-    std::cout<<"Adding 15 at the end of the list\n";
-    InsertAtEnd(head,15);
+    std::cout << "Adding 15 at the end of the list\n";
+    InsertAtEnd(head, 15);
     PrintList(head);
 
-  /*  std::cout<<"Deleting 0 form list\n";
+    /*  std::cout<<"Deleting 0 form list\n";
     DeleteNode(head,0);
     PrintList(head);
 
@@ -284,10 +281,10 @@ int main()
     DeleteNodeAtPosition(head,2);
     PrintList(head);*/
 
-    std::cout<<GetNthNodeElement(head,3);
-    std::cout<<std::endl;
+    std::cout << GetNthNodeElement(head, 3);
+    std::cout << std::endl;
 
-    std::cout<<"Deleting the List\n";
+    std::cout << "Deleting the List\n";
     DeleteList(head);
     PrintList(head);
 
