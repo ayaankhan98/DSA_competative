@@ -5,4 +5,7 @@
 Implementation of various Generic Data Structures and Algorithms
 
 ## Status
+currently none of the implementation is generic but soon all of them will be.
+
+
 work in progress...
