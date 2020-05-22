@@ -54,7 +54,7 @@ void Graph::BFS(int start_vertex)
     while (!q.empty())
     {
         int ele = q.front();
-        cout << ele<< " ";
+        cout << ele << " ";
         q.pop();
         for (auto x : adj[ele])
         {
@@ -96,26 +96,25 @@ void Graph::DFS(int start_vertex)
 bool Graph::detectCycle()
 {
     bool visited[V];
-    for(int i =0; i<V;i++)
+    for (int i = 0; i < V; i++)
         visited[i] = false;
 
     stack<int> s;
     visited[0] = true;
     s.push(0);
-    while(!s.empty())
+    while (!s.empty())
     {
         int ele = s.top();
         s.pop();
-        for(auto x : adj[ele])
+        for (auto x : adj[ele])
         {
-            if(visited[x])
+            if (visited[x])
                 return true;
             else
             {
                 visited[x] = true;
                 s.push(x);
             }
-            
         }
     }
     return false;
@@ -127,19 +126,22 @@ int main()
     g.addEdge(1, 2);
     g.addEdge(2, 3);
     g.addEdge(3, 4);
-    g.addEdge(1, 4);
+    g.addEdge(3, 4);
+    g.addEdge(3, 5);
+    g.addEdge(2, 3);
+    g.addEdge(2, 5);
 
     g.BFS(0);
-    cout<<endl;
+    cout << endl;
     g.DFS(0);
-    cout<<endl;
-   // g.printGraph();
+    cout << endl;
+    // g.printGraph();
     if (g.detectCycle())
-        cout<<"\nCycle Found\n";
+        cout << "\nCycle Found\n";
     else
     {
-        cout<<"No cycle Found\n";
+        cout << "No cycle Found\n";
     }
-    
+
     return 0;
 }
