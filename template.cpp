@@ -1,37 +1,44 @@
-/*
+/**
  *
- * Filename : template.cpp
- * Author : Ayaan Khan
+ * @Filename : template.cpp
+ * @Author : Ayaan Khan
  *
+ * template file
  */
 
 #include <bits/stdc++.h>
+
 using namespace std;
+
 #define pb push_back
 #define mp make_pair
 #define fi first
 #define se second
-#define rep(i,a,n) for(int i=a;i<n;i++)
-#define per(i,a,n) for(int i=n-1;i>=a;i--)
-typedef long long int lli;
+#define INF 1e9
+#define FIO ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+
+typedef long long ll;
 typedef vector<int> vi;
-typedef vector<lli> vlli;
+typedef vector<ll> vll;
 typedef pair<int,int> pii;
+typedef map<int,int> mii;
+typedef map<char,int> mci;
 typedef double db;
 
-void solve()
-{
+auto ONLINE = [] () {
+#ifndef ONLINE_JUDGE
+  freopen("input.txt","r",stdin);
+  freopen("output.txt","w",stdout);
+#endif
+};
+
+void solve() {
   // write your code here
 }
 
-int main()
-{
-  ios_base::sync_with_stdio(false);
-  cin.tie(NULL);
-  cout.tie(NULL);
-#ifndef ONLINE_JUDGE
-  freopen("input.txt","r",stdin);
-#endif
+int main() {
+  FIO;
+  ONLINE();
   int t;
   cin>>t;
   while(t--)
