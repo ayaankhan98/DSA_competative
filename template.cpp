@@ -6,7 +6,25 @@
  * template file
  */
 
-#include <bits/stdc++.h>
+#include <iostream>
+#include <iomanip>
+#include <vector>
+#include <map>
+#include <set>
+#include <list>
+#include <unordered_map>
+#include <unordered_set>
+#include <functional>
+#include <algorithm>
+#include <iterator>
+#include <cmath>
+#include <stack>
+#include <queue>
+#include <deque>
+#include <fstream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <cstdlib>
 
 using namespace std;
 
@@ -26,6 +44,7 @@ typedef long long ll;
 typedef double db;
 typedef vector<int> vi;
 typedef vector<ll> vll;
+typedef vector<vector<int>> vvi;
 typedef pair<int, int> pii;
 typedef map<int, int> mii;
 typedef map<char, int> mci;
