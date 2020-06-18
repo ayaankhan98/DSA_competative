@@ -18,8 +18,8 @@ class linkedList {
     linkedList(): start(nullptr), end(nullptr) {}
     void pushFront(T);
     void pushBack(T);
-    void popFront(T);
-    void popBack(T);
+    void popFront();
+    void popBack();
     void showList();
 };
 
