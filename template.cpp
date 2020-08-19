@@ -1,49 +1,11 @@
 /**
  * @author ayaankhan98
  */
-#include <algorithm>
-#include <bitset>
-#include <cassert>
-#include <cmath>
-#include <complex>
-#include <valarray>
-#include <cstdio>
-#include <cstdlib>
-#include <cstring>
-#include <deque>
-#include <fstream>
-#include <functional>
-#include <iomanip>
-#include <iostream>
-#include <iterator>
-#include <list>
-#include <map>
-#include <queue>
-#include <deque>
-#include <set>
-#include <stack>
-#include <string>
-#include <unordered_map>
-#include <unordered_set>
-#include <utility>
-#include <vector>
-#include <array>
-#include <climits>
-#include <limits>
-#include <memory>
-#include <bit>
-#include <sstream>
+#include <bits/stdc++.h>
 
 using namespace std;
 
-#define gc getchar_unlocked
-#define pb push_back
-#define mp make_pair
-#define fi first
-#define se second
 #define INF ULLONG_MAX
-#define dbg(x) cout << #x << "=" << x << endl
-#define dbg2(x, y) cout << #x << "=" << x << ", " << #y << "=" << y << endl
 #define FIO                                                                    \
   ios_base::sync_with_stdio(0);                                                \
   cin.tie(0);                                                                  \
@@ -52,17 +14,33 @@ using namespace std;
 #define seto(x) memset(x, 1, sizeof(x))
 #define PI 3.1415926535897932384626
 
-typedef int64_t ll;
-typedef double db;
-typedef vector<int> vi;
-typedef vector<ll> vll;
-typedef vector<vector<int>> vvi;
-typedef pair<int, int> pii;
-typedef map<int, int> mii;
-typedef map<char, int> mci;
-typedef vector<pii> vpii;
-typedef vector<pair<ll, ll>> vpll;
-typedef set<int> si;
+#define logs(a)                                                                \
+  {                                                                            \
+    cout << #a << " : [";                                                      \
+    for (auto &x : a)                                                          \
+      cout << x << ", ";                                                       \
+    cout << "]\n";                                                             \
+  }
+
+#define loga(a)                                                                \
+  {                                                                            \
+    cout << #a << " :\n[\n";                                                   \
+    for (auto x : a)                                                           \
+      cout << "  " << x.first << " : " << x.second << "\n";                    \
+    cout << "]\n";                                                             \
+  }
+
+#define debug(...) (debugPrint(#__VA_ARGS__ " : ", __VA_ARGS__))
+template <typename... Args>
+void debugPrint(const char *label, Args &&... args) {
+  cout << "\n[";
+  auto l = [](auto &&arg) {
+    std::cout << std::forward<decltype(arg)>(arg) << ", ";
+  };
+  std::cout << label;
+  (l(std::forward<Args>(args)), ...);
+  cout << "\b\b]\n";
+}
 
 auto ONLINE = []() {
 #ifndef ONLINE_JUDGE
