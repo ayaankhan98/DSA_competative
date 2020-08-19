@@ -25,7 +25,7 @@ using namespace std;
 #define loga(a)                                                                \
   {                                                                            \
     cout << #a << " :\n[\n";                                                   \
-    for (auto x : a)                                                           \
+    for (auto &x : a)                                                           \
       cout << "  " << x.first << " : " << x.second << "\n";                    \
     cout << "]\n";                                                             \
   }
