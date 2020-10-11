@@ -1,7 +1,4 @@
 /**
- * Ayaan Khan
- * GL3134
- * 19COB049
  *
  * Linked List Implementation.
  */
